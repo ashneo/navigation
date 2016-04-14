@@ -19,7 +19,7 @@ import java.util.List;
 @ImportResource(locations = {"app-context.xml"})
 @EnableJSONDoc
 @Slf4j
-public class BackofficeApplication implements CommandLineRunner {
+public class BackendApplication implements CommandLineRunner {
 
 	@Autowired
 	private ServiceStationRepository repository;
@@ -34,6 +34,6 @@ public class BackofficeApplication implements CommandLineRunner {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackofficeApplication.class, args);
+		SpringApplication.run(BackendApplication.class, args);
 	}
 }

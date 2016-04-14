@@ -9,8 +9,12 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Created by a.shloma on 04.04.2016.
@@ -53,9 +57,9 @@ public class DBHelper {
     }
 
     private static String readDataFromFile() {
-        StringBuilder sb = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader(new ClassPathResource("db.txt").getFile()))) {
-            br.lines().forEach(s -> sb.append(s));
+        final StringBuilder sb = new StringBuilder();
+        try (Stream<String> lines = Files.lines(new ClassPathResource("db.txt").getFile().toPath(), StandardCharsets.UTF_8)) {
+            lines.forEach(line -> sb.append(line));
         } catch(IOException e) {
             log.debug("File not found db.txt");
         }

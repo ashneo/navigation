@@ -25,7 +25,7 @@ import java.util.List;
 @ApiVersion(since = "1.0")
 @ApiAuthNone
 @Controller
-public class BackofficeController {
+public class BackendController {
 
     @Autowired
     private ServiceStationService repositoryFacade;
